@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -13,6 +14,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
 public class Country implements Serializable {
 
     @NaturalId
@@ -29,6 +31,12 @@ public class Country implements Serializable {
 
     @OneToMany(mappedBy = "country")
     private Set<City> cities = new HashSet<>();
+
+    public Country(String name, String iso2CountryCode, String iso3CountryCode) {
+        this.name = name;
+        this.iso2CountryCode = iso2CountryCode;
+        this.iso3CountryCode = iso3CountryCode;
+    }
 
     public Set<City> getCities() {
         return cities;

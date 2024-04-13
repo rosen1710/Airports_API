@@ -1,6 +1,7 @@
 package com.example.api.models;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
 public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,6 +26,13 @@ public class City implements Serializable {
     private Set<Airport> airports = new HashSet<>();
 
     private String timezone;
+
+    public City(Long id, String name, Country country, String timezone) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+        this.timezone = timezone;
+    }
 
     public Set<Airport> getAirports() {
         return airports;

@@ -1,12 +1,14 @@
 package com.example.api.models;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@NoArgsConstructor
 public class Airport implements Serializable {
 
     @Id
@@ -30,6 +32,16 @@ public class Airport implements Serializable {
 
     @Column(nullable = false)
     private Double longitude;
+
+    public Airport(Long id, String name, City city, String iataCode, String icaoCode, Double latitude, Double longitude) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.iataCode = iataCode;
+        this.icaoCode = icaoCode;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
     public Long getId() {
         return id;
