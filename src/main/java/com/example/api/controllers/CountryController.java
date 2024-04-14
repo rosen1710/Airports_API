@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("api/v0/countries")
+@RequestMapping("/api/v0/countries")
 public class CountryController {
     private CountryService countryService;
 
